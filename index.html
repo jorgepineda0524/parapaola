@@ -87,6 +87,7 @@
   
     <script>
       function accionParaCuandoEllaDigaQueSi() {
+          guardarRespuesta('Sí')
           window.location.href = "opcionsi.html";
       }
   
@@ -101,6 +102,12 @@
         btnNo.style.position = "absolute";
         btnNo.style.left = newWidth + "px";
         btnNo.style.top = newHeight + "px";
+      }
+
+      function guardarRespuesta(respuesta) {
+        fetch("https://script.google.com/macros/s/AKfycbxZgymT8hofK-qkIfahjGB76Jg8h9M3uTuVn28J4rwMesYK8553Sy4wuwaVhyuzDzqVpg/exec?respuesta=" + respuesta, { mode: "no-cors" })
+          .then(response => response.text())
+          .then(data => console.log("Guardado: ", data))
       }
     </script>
   </body>
